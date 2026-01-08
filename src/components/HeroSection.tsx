@@ -77,7 +77,7 @@ export const HeroSection = () => {
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-secondary to-card">
                   <img
-                    src="src\assets\cv.png"
+                    src="/src/assets/cv.png"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
