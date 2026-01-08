@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
 import { projects, type Project } from '@/data/portfolioData';
 import { Button } from '@/components/ui/button';
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
@@ -21,11 +22,13 @@ export const ProjectsSection = () => {
   const openModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
+    setIsFullScreen(false);
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedProject(null);
+    setIsFullScreen(false);
     document.body.style.overflow = 'auto';
   };
 
@@ -95,6 +98,9 @@ export const ProjectsSection = () => {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <Maximize2 className="w-8 h-8 text-white drop-shadow-lg" />
+                </div>
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground">
                     {project.category}
@@ -134,88 +140,141 @@ export const ProjectsSection = () => {
 
           {/* Modal Content */}
           <div
-            className="relative w-full max-w-5xl max-h-[90vh] overflow-auto glass-card animate-slide-in"
+            className="relative w-full max-w-6xl max-h-[95vh] overflow-hidden glass-card animate-slide-in flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg bg-secondary hover:bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg bg-secondary/80 hover:bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors backdrop-blur-sm"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Image Gallery */}
-              <div className="relative h-64 md:h-auto md:min-h-[400px]">
-                <img
-                  src={selectedProject.images[currentImageIndex]}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+            {/* Image Gallery */}
+            <div className="relative w-full md:w-2/3 h-[50vh] md:h-auto bg-black/90 flex items-center justify-center overflow-hidden">
+              <img
+                src={selectedProject.images[currentImageIndex]}
+                alt={selectedProject.title}
+                className="max-w-full max-h-full object-contain"
+              />
+              
+              <button 
+                 className="absolute top-4 left-4 p-2 rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70 transition-colors cursor-pointer z-20"
+                 onClick={(e) => {
+                   e.stopPropagation();
+                   setIsFullScreen(true);
+                 }}
+              >
+                 <Maximize2 className="w-5 h-5" />
+              </button>
 
-                {/* Gallery Navigation */}
-                {selectedProject.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+              {/* Gallery Navigation */}
+              {selectedProject.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors border border-white/10"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors border border-white/10"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
 
-                    {/* Image Dots */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {selectedProject.images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentImageIndex(index)}
-                          className={`w-2 h-2 rounded-full transition-colors ${
-                            index === currentImageIndex
-                              ? 'bg-primary'
-                              : 'bg-foreground/30'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Project Details */}
-              <div className="p-8 space-y-6">
-                <div>
-                  <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-                    {selectedProject.category}
-                  </span>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold">
-                  {selectedProject.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {selectedProject.description}
-                </p>
-                <div className="space-y-3">
-                  <h4 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tags.map((tag) => (
-                      <span key={tag} className="tech-tag">
-                        {tag}
-                      </span>
+                  {/* Image Dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {selectedProject.images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          index === currentImageIndex
+                            ? 'bg-white'
+                            : 'bg-white/30'
+                        }`}
+                      />
                     ))}
                   </div>
+                </>
+              )}
+            </div>
+
+            {/* Project Details */}
+            <div className="w-full md:w-1/3 p-8 space-y-6 overflow-y-auto max-h-[50vh] md:max-h-full bg-background/95 backdrop-blur-sm">
+              <div>
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
+                  {selectedProject.category}
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold">
+                {selectedProject.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                {selectedProject.description}
+              </p>
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                  Technologies
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tags.map((tag) => (
+                    <span key={tag} className="tech-tag">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Full Screen Image Viewer */}
+      {isFullScreen && selectedProject && (
+        <div 
+          className="fixed inset-0 z-[60] bg-black flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setIsFullScreen(false)}
+        >
+          <button
+            onClick={() => setIsFullScreen(false)}
+            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <img
+             src={selectedProject.images[currentImageIndex]}
+             alt={selectedProject.title}
+             className="max-w-full max-h-[90vh] object-contain"
+             onClick={(e) => e.stopPropagation()}
+          />
+
+           {selectedProject.images.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevImage();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+              <button
+                onClick={(e) => {
+                   e.stopPropagation();
+                   nextImage();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </>
+          )}
         </div>
       )}
     </section>

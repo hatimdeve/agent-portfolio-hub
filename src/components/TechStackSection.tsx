@@ -1,4 +1,4 @@
-import { Brain, Server, Database, Workflow, Cloud, LineChart } from 'lucide-react';
+import { Brain, Server, Database, Workflow, Cloud, LineChart, Code, Cpu } from 'lucide-react';
 import { techStack } from '@/data/portfolioData';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -8,6 +8,8 @@ const iconMap: Record<string, React.ElementType> = {
   Workflow,
   Cloud,
   LineChart,
+  Code,
+  Cpu,
 };
 
 export const TechStackSection = () => {

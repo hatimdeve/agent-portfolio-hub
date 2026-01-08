@@ -1,3 +1,13 @@
+import { Import } from 'lucide-react';
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
+import img3 from '../assets/3.png';
+import img4 from '../assets/4.png';
+import img5 from '../assets/5.png';
+import img6 from '../assets/6.png';
+import img7 from '../assets/7.png';
+import img8 from '../assets/8.png';
+import img9 from '../assets/9.png';
 export interface Project {
   id: number;
   title: string;
@@ -37,169 +47,161 @@ export interface Language {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Multi-Agent RAG System",
-    category: "AI Infrastructure",
-    description: "Designed and deployed a sophisticated multi-agent retrieval-augmented generation system capable of processing 10,000+ documents. The system leverages LangGraph for orchestration, with specialized agents for query understanding, document retrieval, and response synthesis. Achieved 95% accuracy on domain-specific queries with sub-second response times.",
+    title: "Tervela: AI Data Cleaning & Dashboard Deneration Agent ",
+    category: "AI Data Agent",
+    description: "Engineered a dual-agent platform featuring a React frontend and FastAPI backend orchestrated by LangGraph: includes a Data Profiling agent for detailed CSV summaries and automated cleaning, alongside an Insight Agent for dynamic dashboard generation; secured with Clerk and deployed on DigitalOcean.",
     images: [
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800",
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800"
+      img1,
+      img2,
+      img3
     ],
-    tags: ["LangGraph", "OpenAI", "Pinecone", "FastAPI", "Docker"]
+    tags: ["LangGraph", "Groc", "FastAPI","Redis","PostgreSQL", "React", "DigitalOcean"," Clerk Auth"]
   },
   {
     id: 2,
-    title: "Autonomous Workflow Engine",
+    title: "Twilio Auto-Reply",
     category: "Automation",
-    description: "Built an enterprise-grade workflow automation platform that reduced manual processes by 80%. Features include natural language workflow definition, real-time monitoring dashboards, and intelligent error recovery. Integrated with 50+ enterprise tools via custom connectors.",
+    description: "Architected an n8n orchestration system for Twilio SMS, integrating auto-reply logic and real-time lead synchronization with Google Sheets for centralized tracking.",
     images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800"
+      img4
     ],
-    tags: ["n8n", "Python", "Redis", "PostgreSQL", "React"]
+    tags: ["Twilio", "n8n", "Google Sheets"]
   },
   {
     id: 3,
-    title: "Real-time Analytics Dashboard",
-    category: "Data Engineering",
-    description: "Developed a high-performance analytics dashboard processing 1M+ events daily. Implemented streaming data pipelines with Apache Kafka, real-time aggregations, and interactive visualizations. The system provides actionable insights with latency under 100ms.",
+    title: "Enterprise Workflow Automation",
+    category: "Automation",
+    description: "Engineered a serverless n8n pipeline with AWS Lambda and Discord approval gateways, featuring robust rerun handling and automated Google Sheets synchronization.",
     images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800",
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800"
+      img5
     ],
-    tags: ["Kafka", "ClickHouse", "Grafana", "Python", "Kubernetes"]
+    tags: ["n8n", "AWS Lambda", "Discord", "Google Sheets"]
   },
   {
     id: 4,
-    title: "Intelligent Document Processor",
-    category: "AI/ML",
-    description: "Created an AI-powered document processing pipeline that extracts, classifies, and routes documents automatically. Utilizes fine-tuned vision-language models for understanding complex layouts, tables, and handwritten content with 98% extraction accuracy.",
+    title: "Text-To-SQL Chatbot",
+    category: "AI Engineering",
+    description: "Engineered an AI-driven Text-to-SQL chatbot using LlamaIndex and OpenAI, supported by a sAngular full-stack platform and automated CI/CD pipelines via Docker Swarm, Jenkins, and AzureDevOps for scalable data ingestion.",
     images: [
-      "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=800",
-      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800",
-      "https://images.unsplash.com/photo-1568667256549-094345857637?w=800"
+      img6,
+      img7
     ],
-    tags: ["GPT-4 Vision", "Claude", "AWS Textract", "FastAPI", "MongoDB"]
+    tags: ["LlamaIndex ", "OpenAI", "Angular", "FastAPI", "ocker Swarm, Jenkins", "AzureDevOps"]
   },
   {
     id: 5,
-    title: "Conversational AI Platform",
-    category: "AI Infrastructure",
-    description: "Architected a scalable conversational AI platform serving 100K+ daily users. Features include multi-turn context management, sentiment analysis, seamless human handoff, and comprehensive analytics. Reduced support costs by 60% while improving CSAT scores.",
+    title: "Text Summarizer",
+    category: "ML Engineer",
+    description: "Engineered an NLP pipeline using Hugging Face and FastAPI, utilizing MLflow, DVC, and GitHub Actions for automated Docker deployment to AWS.",
     images: [
-      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800",
-      "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800",
-      "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=800"
+      img8
     ],
-    tags: ["Anthropic Claude", "LangChain", "WebSockets", "Redis", "GCP"]
+    tags: ["Hugging Face", "FastAPI", "MLflow", "DVC  ", "GitHub Actions", "AWS"," Docker" ]
   },
   {
     id: 6,
-    title: "MLOps Pipeline Framework",
-    category: "DevOps/MLOps",
-    description: "Designed a comprehensive MLOps framework for continuous training and deployment of ML models. Includes automated data validation, experiment tracking, A/B testing infrastructure, and model monitoring. Reduced model deployment time from weeks to hours.",
+    title: "Speed Limit Detection Using YOLO & CNN",
+    category: "Computer Vision Engineer",
+    description: "Built a two-stage speed limit recognition system for real-time driving scenes. YOLO detects speed-limit signs in video frames, then a custom CNN classifies the numeric value inside the sign. Implemented the full pipeline including dataset preparation, training, evaluation, and real-time inference for road-safety automation.",
     images: [
-      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800",
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800"
+      img9
     ],
-    tags: ["MLflow", "Kubeflow", "Terraform", "GitHub Actions", "Prometheus"]
-  }
+    tags: ["YOLO", "CNN", "TensorFlow", "OpenCV" ]
+  },
+  
 ];
 
 export const experiences: Experience[] = [
   {
     id: 1,
-    role: "Senior Agentic AI Engineer",
-    company: "AI Innovations Inc.",
-    type: "Full-time",
-    date: "2023 - Present",
+    role: "Data Scientist | ADAS Analytics & CV",
+    company: "Alten & Stellantis",
+    type: "Full-time (CDI)",
+    date: "Aug 2024 - Present",
     achievements: [
-      "Led development of multi-agent systems processing 1M+ daily requests",
-      "Architected RAG pipelines achieving 95% accuracy on domain-specific queries",
-      "Mentored team of 5 engineers on AI/ML best practices",
-      "Reduced infrastructure costs by 40% through optimization"
+      "Developing autonomous driving features by implementing YOLO/CNN architectures for object detection.",
+      "Engineering large-scale data pipelines using PySpark, Airflow, and Databricks to analyze telemetric vehicle data for ADAS validation."
     ]
-  },
+},
   {
     id: 2,
-    role: "Automation Architect",
-    company: "Independent Consultant",
-    type: "Contract",
-    date: "2021 - 2023",
+    role: "Data Scientist | Generative AI & MLOps",
+    company: "Berexia & Scor",
+    type: "Internship",
+    date: "Feb 2024 - July 2024",
     achievements: [
-      "Delivered 20+ automation projects across finance, healthcare, and e-commerce",
-      "Built custom n8n and Zapier integrations for enterprise clients",
-      "Created reusable automation frameworks reducing development time by 60%",
-      "Managed projects worth $500K+ in total contract value"
+      "Engineered an AI-driven Text-to-SQL chatbot using LlamaIndex and OpenAI for intelligent data querying.",
+      "Integrated the AI model into a full-stack Angular platform for seamless user interaction.",
+      "Established automated CI/CD pipelines using Docker Swarm, Jenkins, and Azure DevOps for scalable data ingestion."
     ]
-  },
-  {
+},
+ {
     id: 3,
-    role: "ML Engineer",
-    company: "DataTech Solutions",
-    type: "Full-time",
-    date: "2019 - 2021",
+    role: "Data Scientist | NLP for 3D Synthesis",
+    company: "3D Smart Factory",
+    type: "Internship",
+    date: "July 2023 - Aug 2023",
     achievements: [
-      "Developed NLP models for sentiment analysis and entity extraction",
-      "Implemented real-time recommendation systems serving 500K users",
-      "Built data pipelines processing 10TB+ daily",
-      "Published 2 research papers on transformer architectures"
+      "Engineered a conversational NLP interface using Rasa and Python to automate the creation of 3D CAD objects.",
+      "Integrated backend logic with Blender to enable generative 3D modeling directly from natural language commands."
     ]
-  }
+}
 ];
 
 export const techStack: TechCategory[] = [
   {
-    title: "AI & Orchestration",
-    icon: "Brain",
-    skills: ["LangChain", "LangGraph", "CrewAI", "AutoGen", "OpenAI", "Anthropic", "Hugging Face", "RAG Systems"]
-  },
-  {
-    title: "Backend & APIs",
-    icon: "Server",
-    skills: ["Python", "FastAPI", "Node.js", "GraphQL", "REST", "WebSockets", "gRPC", "Celery"]
-  },
-  {
-    title: "Data & Storage",
-    icon: "Database",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Pinecone", "Weaviate", "Elasticsearch", "ClickHouse", "S3"]
-  },
-  {
-    title: "Automation Tools",
+    title: "AI & Automation",
     icon: "Workflow",
-    skills: ["n8n", "Zapier", "Make", "Temporal", "Apache Airflow", "Prefect", "Custom Scripts"]
+    skills: ["Agentic AI Systems", "LangGraph", "LangChain", "n8n", "Make", "Zapier"]
   },
   {
-    title: "Cloud & DevOps",
+    title: "Core AI Expertise",
+    icon: "Brain",
+    skills: ["LLMs", "RAG", "GraphRAG", "Computer Vision (YOLO)", "OCR", "NLP"]
+  },
+  {
+    title: "Programming & Stack",
+    icon: "Code",
+    skills: ["Python", "PySpark", "PyTorch", "TensorFlow", "Pandas", "Pytesseract", "OpenCV", "React", "TypeScript", "SQL"]
+  },
+  {
+    title: "LLM Frameworks",
+    icon: "Cpu",
+    skills: ["LlamaIndex", "Hugging Face", "Groq API", "Ollama"]
+  },
+  {
+    title: "Deployment & MLOps",
     icon: "Cloud",
-    skills: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "ArgoCD"]
+    skills: ["AWS", "Docker", "Kubernetes", "FastAPI", "MLflow", "DVC", "Git", "CI/CD"]
   },
   {
-    title: "Monitoring & Analytics",
-    icon: "LineChart",
-    skills: ["Grafana", "Prometheus", "Datadog", "Sentry", "MLflow", "Weights & Biases", "LangSmith"]
+    title: "Data & Vector DB",
+    icon: "Database",
+    skills: ["Pinecone", "Faiss", "Elasticsearch", "PostgreSQL", "MongoDB", "Neo4j", "Selenium"]
   }
 ];
 
 export const education: Education[] = [
   {
-    degree: "M.S. Computer Science (AI Specialization)",
-    school: "Stanford University",
-    year: "2019"
+    degree: "Cycle d'Ingénieur en Big Data Analytics",
+    school: "Université Euro-Méditerranéenne (EIDIA), Fès",
+    year: "2021 - 2024"
   },
   {
-    degree: "B.S. Computer Engineering",
-    school: "MIT",
-    year: "2017"
+    degree: "Licence en Génie Informatique",
+    school: "Faculté des Sciences et Techniques (FST), Fès",
+    year: "2020 - 2021"
+  },
+  {
+    degree: "DEUST en Mathématiques, Informatique et Physique (MIP)",
+    school: "Faculté des Sciences et Techniques (FST), Fès",
+    year: "2018 - 2020"
   }
 ];
 
 export const languages: Language[] = [
   { name: "Arabic", level: "Native", percentage: 100 },
   { name: "English", level: "Fluent", percentage: 95 },
-  { name: "French", level: "Conversational", percentage: 60 },
-  { name: "German", level: "Basic", percentage: 30 }
+  { name: "French", level: "Fluent", percentage: 95 },
+  { name: "Spanish", level: "Basic", percentage: 30 }
 ];

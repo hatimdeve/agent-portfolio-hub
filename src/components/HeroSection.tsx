@@ -14,23 +14,21 @@ export const HeroSection = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float delay-500" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-0">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
           <div className="space-y-8 animate-fade-up">
             <div className="space-y-4">
               <p className="text-primary font-medium tracking-wide uppercase text-sm">
-                Agentic AI & Automation Engineer
+                Data Scientist | Agentic AI & Automation Engineer
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Building Intelligent
                 <span className="block gradient-text">Autonomous Systems</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                I design and deploy multi-agent AI systems that transform complex workflows 
-                into seamless, automated experiences. Specializing in LLM orchestration, 
-                RAG architectures, and enterprise automation.
-              </p>
+  With 3 years of experience bridging the gap between complex AI research and production-ready business solutions, I specialize in architecting intelligent automation systems. From building multi-agent workflows with LangGraph to orchestrating serverless pipelines using n8n and AWS, I turn data into actionable intelligence. My focus is on Agentic AI, Computer Vision, and scalable Big Data engineering.
+</p>
             </div>
 
             {/* Actions */}
@@ -40,7 +38,7 @@ export const HeroSection = () => {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-6"
                 asChild
               >
-                <a href="mailto:hello@example.com">
+                <a href="mailto:darkaouihatim99@gmail.com">
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Me
                 </a>
@@ -48,7 +46,7 @@ export const HeroSection = () => {
               
               <div className="flex items-center gap-3">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/hatim-darkaoui-a731b8243/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-secondary hover:bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-200"
@@ -57,7 +55,7 @@ export const HeroSection = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/hatimdeve"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-secondary hover:bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-200"
@@ -79,7 +77,7 @@ export const HeroSection = () => {
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-secondary to-card">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                    src="src\assets\cv.png"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
